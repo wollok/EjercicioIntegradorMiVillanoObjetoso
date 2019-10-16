@@ -1,20 +1,16 @@
 object minionSinArmas inherits Exception{}
 
 class Villano {
-	var minions = []
- 	var ciudad
- 	
-	constructor(_ciudad){
-		ciudad = _ciudad
-	}
-	method ciudad() = ciudad
+	var property minions = []
+ 	var property ciudad
 
 	method nuevoMinion(){
-		const minion = new Minion(5)
-	 	const rayoCongelante = new Arma("Rayo Congelante",10)
+		const minion = new Minion(bananas = 5)
+	 	const rayoCongelante = new Arma(nombre = "Rayo Congelante", poder = 10)
 		minion.otorgarArma(rayoCongelante)
 		minions.add(minion)
 	}
+	
 	method agregarMinion(minion){
 		minions.add(minion)
 	}
@@ -31,20 +27,10 @@ class Villano {
 }
 
 class Minion {
-	var bananas
-	var color = amarillo
-	var armas = []
-	var maldades = 0
-
-	constructor(_bananas){
-		bananas = _bananas
-	}
-		
-	method color(_color){color = _color}
-	method bananas() = bananas
-	method color() = color
-	method maldades()= maldades
-	method armas() = armas
+	var property bananas
+	var property color = amarillo
+	var property armas = []
+	var property maldades = 0
 	
 	method perderArmas() { armas.clear()}
 
@@ -102,13 +88,7 @@ object violeta {
 }
 
 class Arma{
-	var nombre
-	var poder
-	constructor(_nombre, _poder){
-		poder = _poder
-		nombre = _nombre
-	}
-	method poder() = poder
-	method nombre() = nombre
+	var property nombre
+	var property poder
 }
 

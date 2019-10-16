@@ -3,13 +3,13 @@ import Misiones.*
 
 describe "Test Minions"{
 
-	var arma1 = new Arma("Pistola",5)
-	var arma2 = new Arma("Bazooka",10)
-	var steve = new Minion(0)
-	var jon = new Minion(10)
+	var arma1 = new Arma(nombre = "Pistola", poder = 5)
+	var arma2 = new Arma(nombre = "Bazooka", poder = 10)
+	var steve = new Minion(bananas = 0)
+	var jon = new Minion(bananas = 10)
 	
 	method agregarArmas(){
-		5.times({steve.otorgarArma(arma1)})
+		5.times({a=> steve.otorgarArma(arma1)})
 
 	}
 	test "steve no tiene armas" {
@@ -25,7 +25,7 @@ describe "Test Minions"{
 	}
 	test "se le agrega 15 bananas a steve y come 5 "{
 		steve.alimentar(15)
-		5.times({steve.comerBanana()})
+		5.times({a=>steve.comerBanana()})
 		assert.equals(10, steve.bananas())
 	}
 	test "se le agregan 5 armas a steve y es peligroso"{
@@ -40,7 +40,7 @@ describe "Test Minions"{
 		assert.equals(violeta,steve.color())
 	}
 	test "Steve toma 2 veces el suero y es amarillo"{
-		2.times({steve.consumirSueroMutante()})
+		2.times({a=>steve.consumirSueroMutante()})
 		assert.equals(amarillo,steve.color())
 	}
 	test "Jon toma el suero y se queda sin armas"{

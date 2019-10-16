@@ -4,27 +4,26 @@ object sinMinionsAsignados inherits Exception {}
 
 class Maldad {
 	
-	const minionsAsignados=[]
+	const property minionsAsignados=[]
 	
 	method asignarMinions(minions){
 		minionsAsignados.addAll(minions)
 	}
-	
-	method minionsAsignados() = minionsAsignados
-		
+			
 	method realizar(ciudad){
 		if(minionsAsignados.isEmpty())
 			throw sinMinionsAsignados 
 		self.realizarEn(ciudad)
 		minionsAsignados.forEach{minion=>self.realizarCon(minion) minion.agregarMaldad()}
 	}
+	
 	method realizarEn(ciudad)
 	method realizarCon(minion) 
 	method esApto(minion)
 }
 
 class Congelar inherits Maldad{
-	var nivelMinimo = 500
+	var property nivelMinimo = 500
 	
 	override 
 	method realizarEn(ciudad){
@@ -42,11 +41,8 @@ class Congelar inherits Maldad{
 }
 
 class Robar inherits Maldad{
-	var objetivo
+	var property objetivo
 	
-	constructor(_objetivo){
-		objetivo = _objetivo
-	}
 	override 
 	method realizarEn(ciudad){
 		ciudad.eliminar(objetivo)
@@ -63,8 +59,7 @@ class Robar inherits Maldad{
 }
 
 class Piramide{
-	var altura
-	constructor(_altura) {altura = _altura}
+	var property altura
 
 	method esApto(minion) = 
 		minion.nivelConcentracion() > altura/2 
@@ -80,7 +75,7 @@ object luna {
 		minion.tieneArma("Rayo para encoger") 
 			
 	method realizarCon(minion){
-		minion.otorgarArma(new Arma("Rayo Congelante",10))
+		minion.otorgarArma(new Arma(nombre = "Rayo Congelante",poder = 10))
 	}
 
 }
@@ -99,12 +94,8 @@ object sueroMutante{
 
 
 class Ciudad {
-	var temperatura
-	var maravillas
-	constructor(temp,marav){
-		temperatura = temp
-		maravillas = marav
-	}
+	var property temperatura
+	var property maravillas
 	
 	method temperatura() = temperatura
 
@@ -112,12 +103,10 @@ class Ciudad {
 		temperatura -= t
 	}
 	
-	method objetosQueTiene()= maravillas
-
 	method eliminar(elemento){
 		maravillas.remove(elemento)
 	}
-	method tieneMaravilla(elemento)= maravillas.contains(elemento)
+	method tieneMaravilla(elemento) = maravillas.contains(elemento)
 	
 }
 	

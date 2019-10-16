@@ -3,11 +3,11 @@ import Misiones.*
 
 
 describe "Test Villanos"{
-	var rosario  = new Ciudad(30,[])
-	var gru 	 = new Villano(rosario)	
+	var rosario  = new Ciudad(temperatura = 30, maravillas = [])
+	var gru 	 = new Villano(ciudad = rosario)	
 	var congelar = new Congelar()
-	var steve 	 = new Minion(0)
-	var rayoC = new Arma("Rayo Congelante",10)
+	var steve 	 = new Minion(bananas = 0)
+	var rayoC = new Arma(nombre = "Rayo Congelante", poder = 10)
 
 	fixture{	
 		gru.agregarMinion(steve)
