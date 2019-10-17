@@ -3,7 +3,7 @@ import Misiones.*
 
 
 describe "Test Villanos"{
-	var rosario  = new Ciudad(temperatura = 30, maravillas = [])
+	var rosario  = new Ciudad(temperatura = 30)
 	var gru 	 = new Villano(ciudad = rosario)	
 	var congelar = new Congelar()
 	var steve 	 = new Minion(bananas = 0)
@@ -44,7 +44,7 @@ describe "Test Villanos"{
 	
 	}
 	test "Si pedimos hacer una maldad sin minions debe salir error"{
-		assert.throwsExceptionLike(sinMinionsAsignados,{gru.realizar(congelar)})
+		assert.throwsExceptionWithType(new SinMinionsAsignados(message=""),{gru.realizar(congelar)})
 	}
 
 	test "Si gru hace la maldad, steve tiene una maldad"{

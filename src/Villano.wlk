@@ -1,7 +1,7 @@
-object minionSinArmas inherits Exception{}
+class MinionSinArmas inherits Exception{}
 
 class Villano {
-	var property minions = []
+	const minions = []
  	var property ciudad
 
 	method nuevoMinion(){
@@ -29,7 +29,7 @@ class Villano {
 class Minion {
 	var property bananas
 	var property color = amarillo
-	var property armas = []
+	const property armas = []
 	var property maldades = 0
 	
 	method perderArmas() { armas.clear()}
@@ -60,7 +60,7 @@ class Minion {
 	}
 	method poderArmaMasPoderosa(){
 		if (armas.isEmpty())
-			throw minionSinArmas 
+			throw new MinionSinArmas(message = "Minion sin armas") 
 		return armas.max{a=> a.poder()}.poder()
 	}
 	method nivelConcentracion(){

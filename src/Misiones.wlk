@@ -1,6 +1,6 @@
 import Villano.*
 
-object sinMinionsAsignados inherits Exception {}
+class SinMinionsAsignados inherits Exception {}
 
 class Maldad {
 	
@@ -12,7 +12,7 @@ class Maldad {
 			
 	method realizar(ciudad){
 		if(minionsAsignados.isEmpty())
-			throw sinMinionsAsignados 
+			throw new SinMinionsAsignados(message = "Sin minions asignados") 
 		self.realizarEn(ciudad)
 		minionsAsignados.forEach{minion=>self.realizarCon(minion) minion.agregarMaldad()}
 	}
@@ -95,10 +95,8 @@ object sueroMutante{
 
 class Ciudad {
 	var property temperatura
-	var property maravillas
+	const maravillas = []
 	
-	method temperatura() = temperatura
-
 	method reducirTemperatura(t){
 		temperatura -= t
 	}
